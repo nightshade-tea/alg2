@@ -9,10 +9,6 @@
 #define MUL '*'
 #define DIV '/'
 
-// Sugestão: informe-se sobre as funções em ctype.h como
-//           isdigit(), isalpha() etc, bem como sobre as funções em
-//           stdlib.h como strtod() etc.
-
 static int eh_operador(const char *item)
 {
     if (item == NULL || strlen(item) > 1)
