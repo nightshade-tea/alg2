@@ -29,6 +29,17 @@ static int eh_operador(const char *s)
     return 0;
 }
 
+static int eh_operando(const char *s)
+{
+    if (s == NULL)
+        return 0;
+
+    char *fim;
+    strtod(s, &fim);
+
+    return (*fim == '\0');
+}
+
 static double calcula(char opr, double op1, double op2)
 {
     switch (opr) {
