@@ -13,6 +13,22 @@
 //           isdigit(), isalpha() etc, bem como sobre as funções em
 //           stdlib.h como strtod() etc.
 
+static int eh_operador(const char *s)
+{
+    if (s == NULL || strlen(s) > 1)
+        return 0;
+
+    switch (s[0]) {
+    case ADD:
+    case SUB:
+    case MUL:
+    case DIV:
+        return 1;
+    }
+
+    return 0;
+}
+
 static double calcula(char opr, double op1, double op2)
 {
     switch (opr) {
