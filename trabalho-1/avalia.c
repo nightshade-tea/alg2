@@ -4,6 +4,10 @@
 #include <math.h>
 #include "avalia.h"
 
+/* TODO
+ * - adicionar comentários p/ cada função
+ * - verificar quais operações precisam ser implementadas */
+
 #define ADD '+'
 #define SUB '-'
 #define MUL '*'
@@ -57,7 +61,6 @@ char *proximo_item(void)
     static char buffer[TAMANHO_MAXIMO_ITEM + 1];
 
     if (scanf("%s", buffer) == EOF)
-
         return NULL;
 
     return strcpy(malloc(sizeof(char) * (strlen(buffer) + 1)), buffer);
