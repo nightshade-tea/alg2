@@ -12,6 +12,8 @@
 #define SUB '-'
 #define MUL '*'
 #define DIV '/'
+#define EXP '^'
+#define MOD '%'
 
 static int eh_operador(const char *item)
 {
@@ -23,6 +25,8 @@ static int eh_operador(const char *item)
     case SUB:
     case MUL:
     case DIV:
+    case EXP:
+    case MOD:
         return 1;
     }
 
@@ -51,6 +55,10 @@ static double calcula(char opr, double op1, double op2)
         return op1 * op2;
     case DIV:
         return op1 / op2;
+    case EXP:
+        return pow(op1, op2);
+    case MOD:
+        return fmod(op1, op2);
     }
 
     return NAN;
