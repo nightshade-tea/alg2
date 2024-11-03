@@ -13,12 +13,12 @@
 //           isdigit(), isalpha() etc, bem como sobre as funções em
 //           stdlib.h como strtod() etc.
 
-static int eh_operador(const char *s)
+static int eh_operador(const char *item)
 {
-    if (s == NULL || strlen(s) > 1)
+    if (item == NULL || strlen(item) > 1)
         return 0;
 
-    switch (s[0]) {
+    switch (item[0]) {
     case ADD:
     case SUB:
     case MUL:
@@ -29,13 +29,13 @@ static int eh_operador(const char *s)
     return 0;
 }
 
-static int eh_operando(const char *s)
+static int eh_operando(const char *item)
 {
-    if (s == NULL)
+    if (item == NULL)
         return 0;
 
     char *fim;
-    strtod(s, &fim);
+    strtod(item, &fim);
 
     return (*fim == '\0');
 }
