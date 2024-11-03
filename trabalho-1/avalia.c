@@ -70,9 +70,6 @@ double avalia(void)
 {
     char *item = proximo_item();
 
-    if (item == NULL)
-        return NAN;
-
     if (eh_operador(item)) {
         char opr = item[0];
         free(item);
@@ -84,10 +81,10 @@ double avalia(void)
     }
 
     if (eh_operando(item)) {
-        double valor = strtod(item, NULL);
+        double val = strtod(item, NULL);
         free(item);
 
-        return valor;
+        return val;
     }
 
     free(item);
