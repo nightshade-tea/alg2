@@ -15,7 +15,7 @@
 
 static int eh_operador(const char *item)
 {
-    if (item == NULL || strlen(item) > 1)
+    if (item == NULL || strlen(item) != 1)
         return 0;
 
     switch (item[0]) {
@@ -53,7 +53,7 @@ static double calcula(char opr, double op1, double op2)
         return op1 / op2;
     }
 
-    return 0;
+    return NAN;
 }
 
 char *proximo_item(void)
