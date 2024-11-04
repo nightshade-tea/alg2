@@ -4,10 +4,7 @@
 #include <math.h>
 #include "avalia.h"
 
-/* TODO
- * - adicionar comentários p/ cada função
- * - verificar quais operações precisam ser implementadas */
-
+/* Operações aritméticas */
 #define ADD '+'
 #define SUB '-'
 #define MUL '*'
@@ -15,6 +12,15 @@
 #define EXP '^'
 #define MOD '%'
 
+/*
+ * Verifica se o item é um operador (+, -, *, /, ^, %).
+ *
+ * Um item é um operador quando é uma string com apenas um caractere, o qual
+ * deve representar alguma das operações aritméticas definidas.
+ *
+ * Retorno: 1 se é um operador ou 0 se não é um operador. Em caso de erro
+ * retorna 0.
+ */
 static int eh_operador(const char *item)
 {
     if (item == NULL || strlen(item) != 1)
@@ -33,6 +39,18 @@ static int eh_operador(const char *item)
     return 0;
 }
 
+/*
+ * Verifica se o item é um operando (número).
+ *
+ * Um item é um operando quando é uma string que representa um número válido,
+ * podendo conter casas decimais.
+ *
+ * Considera-se que a string é um número válido se a função strtod() conseguir
+ * convertê-la para um número, sem sobra de caracteres.
+ *
+ * Retorno: 1 se é um operando ou 0 se não é um operando. Em caso de erro
+ * retorna 0.
+ */
 static int eh_operando(const char *item)
 {
     if (item == NULL)
@@ -44,6 +62,17 @@ static int eh_operando(const char *item)
     return (*fim == '\0');
 }
 
+/*
+ * Efetua o cálculo da operação aritmética opr entre os operandos op1 e op2,
+ * respectivamente.
+ *
+ * Retorno: o resultado da operação ou NAN em caso de erro.
+ *
+ * Exemplos:
+ * calcula('+', 1, 1) retorna 2.
+ * calcula('*', 2, 3) retorna 6.
+ * calcula('/', 0, 0) retorna NAN.
+ */
 static double calcula(char opr, double op1, double op2)
 {
     switch (opr) {
