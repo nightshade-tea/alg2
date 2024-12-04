@@ -4,6 +4,9 @@
 #include <math.h>
 #include "avalia.h"
 
+#define XSTR(X) #X
+#define STR(X) XSTR(X)
+
 /* Operações aritméticas */
 #define ADD '+'
 #define SUB '-'
@@ -114,7 +117,7 @@ char *proximo_item(void)
 {
     static char buffer[TAMANHO_MAXIMO_ITEM + 1];
 
-    if (scanf("%s", buffer) == EOF)
+    if (scanf("%" STR(TAMANHO_MAXIMO_ITEM) "s", buffer) == EOF)
         return NULL;
 
     return strcpy(malloc(sizeof(char) * (strlen(buffer) + 1)), buffer);
