@@ -126,23 +126,17 @@ char *proximo_item(void)
 double avalia(void)
 {
     char *item = proximo_item();
+    double op1, op2, val = NAN;
 
-    if (eh_operando(item)) {
-        double val = strtod(item, NULL);
+    if (eh_operando(item))
+        val = strtod(item, NULL);
 
-        free(item);
-        return val;
-    }
-
-    if (eh_operador(item)) {
-        double op1 = avalia();
-        double op2 = avalia();
-        double val = calcula(item, op1, op2);
-
-        free(item);
-        return val;
+    else if (eh_operador(item)) {
+        op1 = avalia();
+        op2 = avalia();
+        val = calcula(item, op1, op2);
     }
 
     free(item);
-    return NAN;
+    return val;
 }
